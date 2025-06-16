@@ -32,8 +32,8 @@ const store=mongostore.create({
 });
 
 store.on("error", (err) => {
-    console.log("error in mongo session store", err)
-})
+    console.log("error in mongo session store", err);
+});
 
 const sessionoptions={
     store,
@@ -92,13 +92,17 @@ app.use((req, res, next) => {
 //     res.send(registereduser);
 // });
 
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
+
 app.use("/listings", listingrouter);
 app.use("/listings/:id/reviews", reviewrouter);
 app.use("/", userrouter);
 
-// app.all("*", (req, res, next) => {
-//     next(new expresserror(404,"page not found"));
-// });
+app.all("*", (req, res, next) => {
+    next(new expresserror(404,"page not found"));
+});
 
 app.use((err, req, res, next) => {
     let {statusCode=500, message="something went wrong"}=err;
