@@ -1,4 +1,4 @@
-const { Query } = require("mongoose");
+const { query } = require("mongoose");
 const listing = require("../models/listing");
 const mbxgeocoding=require("@mapbox/mapbox-sdk/services/geocoding");
 const maptoken=process.env.MAP_TOKEN;
@@ -76,4 +76,41 @@ module.exports.deletelisting=async(req, res) => {
     let deletedlisting=await listing.findByIdAndDelete(id);
     req.flash("success", "Listing deleted!");
     res.redirect("/listings");
+};
+
+///searching bar 
+
+module.exports.searchinglistrender=async (req, res) => {
+  let searchTerm = req.query.query.trim().toLowerCase();
+  console.log("User searched for:", searchTerm);
+  const searchwords=searchTerm.split(/\s+/);
+  const skipwords=["in", "on", "at", "the", "a", "an", "and", "of"];
+try{
+    for(let word of searchwords){
+         if (skipwords.includes(word)) {
+        continue; // skip common words
+      }
+        const regex = new RegExp(`^.*${word}.*$`, "i");
+        const searchlistingsfound = await listing.find({
+        $or: [
+          { title: regex },
+          { location: regex },
+          { country: regex }
+        ]
+      });
+      if(searchlistingsfound.length > 0) {
+        console.log(`Matched word: "${word}"`);
+        searchlistingsfound.forEach(list => {
+        console.log(list);
+        });
+        return res.render("listings/searchlist.ejs", {listing: searchlistingsfound, searchQuery: req.query.query});
+      }
+    }
+    console.log("no results found");
+    return res.render("listings/searchlist.ejs", { listing: [], searchQuery: req.query.query });
+}catch(err){
+    console.log(err);
+    req.flash("error", "something went wrong");
+    return res.redirect("/listings");
+};
 };

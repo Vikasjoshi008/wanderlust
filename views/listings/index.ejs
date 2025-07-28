@@ -1,44 +1,6 @@
 <% layout("/layouts/boilerplate.ejs") %>
 
-<style>
-  #filters{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .filter{
-    text-align: center;
-    margin-right: 2rem;
-    margin-top: 2rem;
-    opacity: 0.7;
-  }
-
-  .filter:hover{
-    opacity: 1;
-    cursor: pointer;
-  }
-
-  .filter p {
-    font-size: 0.8rem;
-  }
-
-  .tax-info{
-    display: none;
-  }
-
-  .tax-toggle{
-    border: 1px solid black;
-    border-radius: 1rem;
-    height: 3.25rem;
-    padding: 1rem;
-    margin-left: 2rem;
-    display: flex;
-    align-items: center;
-  }
-</style>
-
-<div id="filters">
+<div id="filters" class="d-none d-md-flex">
   <div class="filter">
     <div><i class="fa-brands fa-gripfire"></i></div>
     <p>Trending</p>
@@ -96,38 +58,45 @@
   </div>
   </div>
 </div>
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
-    <% for(listing of listings){ %>
-    <a href="/listings/<%= listing._id %>" class="listing-link">
-    <div class="card listing-card">
-        <img src="<%=listing.image.url%>" 
-        class="card-img-top" 
-        alt="listing_image" 
-        style="height: 20rem;">
-        <div class="card-img-overlay"></div>
-        <div class="card-body">
-          <p class="card-text">
-            <b><%= listing.title %></b>
-            <br>
-            &#8377;<%= listing.price.toLocaleString("en-IN") %>/night
-            <i class="tax-info">&nbsp; +18% GST</i>
-          </p>
+<!-- Mobile: horizontally scrollable rows with 8 listings each -->
+<% function chunk(arr, size) { let out = []; for(let i=0; i<arr.length; i+=size) out.push(arr.slice(i,i+size)); return out; } %>
+<% chunk(listings, 8).forEach(function(row) { %>
+  <div class="listing-scroll-row d-md-none mb-3">
+    <% row.forEach(function(listing) { %>
+      <a href="/listings/<%= listing._id %>" class="listing-link me-5">
+        <div class="card listing-card">
+          <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image">
+          <div class="card-img-overlay"></div>
+          <div class="card-body">
+            <p class="card-text">
+              <b><%= listing.title %></b>
+              &#8377;<%= listing.price.toLocaleString('en-IN') %>/night
+              <i class="tax-info">&nbsp; +18% GST</i>
+            </p>
+          </div>
         </div>
-      </div>
-    </a>
-    <% } %>
-</div>
-
-<script>
-  let taxswitch=document.getElementById("switchCheckDefault");
-  taxswitch.addEventListener("click", () => {
-    let taxinfo=document.getElementsByClassName("tax-info")
-    for(info of taxinfo){
-      if(info.style.display != "inline"){
-        info.style.display="inline";
-      }else{
-        info.style.display="none"
-      }
-    }
-  });
-</script>
+      </a>
+    <% }); %>
+  </div>
+<% }); %>
+<!-- Desktop/laptop: horizontal scrollable rows with 8 listings each -->
+<% function chunk(arr, size) { let out = []; for(let i=0; i<arr.length; i+=size) out.push(arr.slice(i,i+size)); return out; } %>
+<% chunk(listings, 8).forEach(function(row) { %>
+  <div class="listing-desktop-row d-none d-md-flex mb-4">
+    <% row.forEach(function(listing) { %>
+      <a href="/listings/<%= listing._id %>" class="listing-link-desktop">
+        <div class="card listing-card-desktop">
+          <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image">
+          <div class="card-img-overlay"></div>
+          <div class="card-body">
+            <p class="card-text">
+              <b><%= listing.title %></b>
+              &#8377;<%= listing.price.toLocaleString("en-IN") %>/night
+              <i class="tax-info">&nbsp; +18% GST</i>
+            </p>
+          </div>
+        </div>
+      </a>
+    <% }); %>
+  </div>
+<% }); %>

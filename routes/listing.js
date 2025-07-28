@@ -19,8 +19,11 @@ router.route("/")
 //new route
 router.get("/new", isloggedin, listingcontroller.rendernewform);
 
+//search route
+router.get("/search", listingcontroller.searchinglistrender);
+
 router.route("/:id")
-.get( listingcontroller.showlisting )
+.get( listingcontroller.showlisting)
 .put(
     isloggedin,
     isowner,
@@ -32,7 +35,7 @@ router.route("/:id")
     isloggedin,
     isowner,
     wrapasync(listingcontroller.deletelisting)
-)
+);
 
 //edit route
 router.get("/:id/edit",

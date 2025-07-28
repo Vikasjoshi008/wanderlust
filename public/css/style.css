@@ -14,10 +14,16 @@ body {
     margin-bottom: 2rem;
 }
 
+/* General card image style for grid (desktop/tablet) */
 .card-img-top {
-    border-radius: 1rem !important;
-    width: 100% !important;
-    object-fit: cover !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1rem !important;
+  box-shadow: none !important;
 }
 
 
@@ -61,7 +67,7 @@ body {
 
 .f-info{
     text-align: center;
-    height: 8rem;
+    height: 10rem;
     display: flex;
     background-color: #ebebeb;
     flex-wrap: wrap;
@@ -92,13 +98,62 @@ body {
     background-color: #fe424d !important;
     border: none !important;
 }
- 
-/* .edit-btn, .del-btn {
-    width: 48%;
-}  */
+
+.btn-search {
+    background-color: #ff385c;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+}
+
+.btn-search:hover {
+    background-color: #e31c5f;
+    color: white;
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+    .search-inp {
+        border-radius: 1rem !important;
+    }
+    .btn-search {
+        background-color: #ff385c !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 1rem !important;
+    }
+    .btn-search:hover {
+        background-color: #e31c5f !important;
+        color: white !important;
+    }
+    .show-img {
+        width: 95% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        border-radius: 1rem !important;
+        display: block;
+        height: 200px !important;
+        object-fit: cover !important;
+    }
+    .card form button.btn.btn-dark {
+        width: 6rem !important;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        display: block;
+        font-size: 0.95rem;
+        padding: 0.3rem 0.5rem;
+    }
+    #map {
+        width: 93vw !important;
+    }
+    .airbnb-map-container {
+        margin: 0 -15px;
+    }
+}
 
 .show-img{
     height: 30vh;
+    box-shadow: none !important;
 }
 
 .btns{
@@ -107,7 +162,81 @@ body {
     margin-bottom: 1rem;
 }
 
+/* navbar */
 
+.navbar-cont{
+    display: flex;
+    justify-content: space-around;
+}
+
+.Explore{
+    position: relative;
+    right: 22rem;
+}
+
+.search{
+    position: relative;
+    right: 22rem;
+}
+
+.btn-search{
+    height: 2.2rem;
+    background-color: #fe424d;
+    color: #ffff;
+    border-radius: 2rem;
+    padding: 0 1rem 0 1rem;
+  }
+  .btn-search:hover{
+    background-color: #fe424d;
+    color: #ffff;
+  }
+  .btn-search i {
+    display: inline;
+    margin-right: 0.5rem;
+  }
+  .search-inp{
+    width: 29rem;
+    text-align: center;
+    border-radius: 2rem;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+  }
+
+/* index.ejs listing */
+#filters{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .filter{
+    text-align: center;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    opacity: 0.7;
+  }
+
+  .filter:hover{
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  .filter p {
+    font-size: 0.8rem;
+  }
+
+  .tax-info{
+    display: none;
+  }
+
+  .tax-toggle{
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 3.25rem;
+    padding: 1rem;
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+  }
 
 .edit-btn{
     background-color: #fe424d !important;
@@ -123,4 +252,593 @@ body {
 #map {
     height: 400px;
     width: 80vh;
+}
+
+.listing-form-card {
+  background: #fff8f6;
+  border-radius: 1.5rem;
+  padding: 2rem 2.5rem;
+  margin-bottom: 2rem;
+}
+.listing-form-card h3 {
+  color: #fe424d;
+  font-weight: 700;
+}
+.listing-form-card .form-label {
+  font-weight: 500;
+  color: #333;
+}
+.listing-form-card .form-control:focus {
+  border-color: #fe424d;
+  box-shadow: 0 0 0 0.15rem rgba(254,66,77,0.15);
+}
+.listing-form-card .btn-danger {
+  background: linear-gradient(90deg, #fe424d 60%, #ff7e5f 100%);
+  border: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.listing-form-card .btn-danger:hover {
+  background: linear-gradient(90deg, #ff7e5f 60%, #fe424d 100%);
+  box-shadow: 0 2px 8px rgba(254,66,77,0.12);
+}
+.listing-form-card input[type="file"] {
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+/* Desktop/Laptop specific navbar styling */
+@media (min-width: 769px) {
+  .navbar .container-fluid {
+    max-width: none;
+    padding-left: 1rem;
+  }
+  
+  .navbar .w-100 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Left section - Logo and Explore */
+  .navbar .d-flex:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    flex: 0 0 auto;
+  }
+  
+  /* Center section - Search */
+  .navbar .flex-grow-1 {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    margin: 0 2rem;
+  }
+  
+  /* Right section - User actions */
+  .navbar .d-flex:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    flex: 0 0 auto;
+  }
+  
+  .navbar .nav-link {
+    font-weight: 500;
+    color: #222222 !important;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+  }
+  
+  .navbar .nav-link:hover {
+    color: #fe424d !important;
+  }
+  
+  .navbar .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .navbar .flex-grow-1 {
+    display: flex;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .search-inp {
+    width: 100% !important;
+    max-width: 400px;
+    min-width: 300px;
+    text-align: center;
+    border-radius: 2rem !important;
+    padding: 0.75rem 3rem;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .search-inp:focus {
+    border-color: #fe424d;
+    box-shadow: 0 4px 12px rgba(254,66,77,0.15);
+    outline: none;
+  }
+  
+  .btn-search {
+    background-color: #fe424d !important;
+    border-radius: 2rem !important;
+    height: 2rem;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Desktop listings horizontal scroll layout */
+  .listing-desktop-row {
+    display: flex;
+    overflow-x:auto;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .listing-desktop-row::-webkit-scrollbar {
+  display: none;
+}
+  
+  .listing-desktop-row::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+    display: none;
+  }
+  
+  .listing-desktop-row::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+    display: none;
+  }
+  
+  .listing-link-desktop {
+    flex: 0 0 auto;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .listing-card-desktop {
+    width: 15rem;
+    height: 15rem;
+    border: none !important;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  
+  .listing-card-desktop:hover {
+    transform: translateY(-3px);
+  }
+  
+  .listing-card-desktop .card-img-top {
+    width: 100%;
+    height: 16rem;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+  
+  .listing-card-desktop .card-body {
+    padding: 1rem;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .listing-card-desktop .card-text {
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+  }
+  
+  .listing-card-desktop .card-text b {
+    font-size: 1rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 769px) {
+  .listing-card,
+  .card-img-top,
+  .listing-card-desktop,
+  .card,
+  .listing-link .card,
+  .listing-link .card-img-top{
+    box-shadow: none !important;
+  }
+}
+
+/* @media queries */
+
+@media (max-width: 768px) {
+  .navbar-cont {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .Explore,
+  .search {
+    position: static;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+  
+  .search-inp {
+    width: 100% !important;
+    min-width: 0;
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 3rem;
+    margin: 0 auto;
+  }
+  .btn-search {
+    background-color: #fe424d;
+    right: 0.5rem;
+    left: auto;
+    margin-right: 0.5rem;
+  }
+  .card-img-top {
+    height: 10rem !important;
+    width: 10rem !important;
+    object-fit: cover !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .listing-scroll-row {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    margin-top: 0.7rem;
+  }
+  
+  .listing-scroll-row .listing-link {
+    width: 100vw;
+    min-width: 10rem;
+    max-width: 15rem;
+    display: inline-block;
+    vertical-align: top;
+    text-decoration: none;
+  }
+  .listing-scroll-row .listing-card {
+    width: 100%;
+    min-width: 8rem;
+    padding: 0.3rem 0.2rem 0.7rem 0.2rem;
+  }
+  .listing-scroll-row .card-text {
+    font-size: 0.95rem;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0;
+  }
+  .listing-scroll-row .card-text b {
+    font-size: 1.05rem;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: unset;
+    display: block;
+    max-width: 100%;
+    line-height: 1.15;
+    min-height: unset;
+    margin-bottom: 0.5rem;
+  }
+  .listing-scroll-row .listing-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .listing-scroll-row::-webkit-scrollbar {
+    display: none;
+  }
+  .listing-scroll-row {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .listing-form-card {
+    padding: 1.2rem 0.5rem;
+    border-radius: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .listing-form-card h3 {
+    font-size: 1.3rem;
+  }
+  .listing-form-card .form-control,
+  .listing-form-card .btn-danger {
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+  }
+  .listing-card {
+    margin-bottom: 1.1rem;
+  }
+  .listing-scroll-row .card-img-top {
+    object-fit: cover !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 2rem !important;
+  }
+
+  .listing-scroll-row .card-img-top {
+    width: 12rem !important;
+    height: 12rem !important;
+    object-fit: cover !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 2rem !important;
+  }
+
+  .listing-scroll-row {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .listing-scroll-row .listing-card {
+    width: 100vw;
+    max-width: 20rem;
+    min-width: 12rem;
+    height: 80vw;
+    max-height: 20rem;
+    min-height: 14rem;
+    margin-right: 1rem;
+    flex: 0 0 auto;
+    overflow: hidden;
+  }
+  .listing-scroll-row .card-img-top {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 2rem !important;
+    display: block;
+    margin: 0;
+  }
+  .listing-scroll-row .card-body {
+    padding: 0.7rem;
+  }
+  .listing-scroll-row .card-text b {
+    font-size: 1.05rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    max-width: 100%;
+    line-height: 1;
+    min-height: unset;
+  }
+
+  .listing-card{
+    margin-right: 2rem !important;
+  }
+  .show-img {
+    width: 85% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    border-radius: 1rem !important;
+    display: block;
+    margin: 0.5rem;
+  }
+  .show-card,
+  .listing-card {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .btns {
+    gap: 0.5rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-search {
+    max-width: 5.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 0.95rem;
+  }
+  .btn-search i {
+    margin-right: 0.3rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .btn-search {
+    max-width: 5rem;
+    font-size: 0.85rem;
+  }
+  .btn-search i {
+    margin-right: 0.2rem;
+  }
+}
+
+/* Navbar Responsive Layouts */
+#navbarDesktop {
+  min-height: 5rem;
+}
+#navbarDesktop .navbar-brand {
+  font-size: 1.7rem;
+  color: #fe424d;
+}
+#navbarDesktop .nav-link {
+  font-weight: 500;
+  margin-right: 1rem;
+  margin-left: 0.5rem;
+}
+#navbarDesktop .nav-link:last-child {
+  margin-right: 0;
+}
+#navbarDesktop form {
+  max-width: 32rem;
+}
+#navbarMobile .navbar-brand {
+  font-size: 1.5rem;
+  color: #fe424d;
+}
+@media (min-width: 769px) {
+  #navbarDesktop { display: flex !important; }
+  #navbarMobile { display: none !important; }
+  .search-inp { width: 24rem; }
+}
+@media (max-width: 768px) {
+  #navbarDesktop { display: none !important; }
+  #navbarMobile { display: flex !important; }
+  .search-inp { width: 100% !important; min-width: 0; max-width: 100%; }
+}
+
+@media (max-width: 768px) {
+  .listing-scroll-row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: -17px;
+  }
+
+
+  .listing-scroll-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .listing-scroll-row .listing-link {
+    flex: 0 0 auto;
+    width: 10rem;
+    margin-right: 1rem;
+    text-decoration: none;
+  }
+
+  .listing-scroll-row .listing-card {
+    width: 10rem;
+    height: 16rem;
+    overflow: hidden;
+    margin-bottom: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .listing-scroll-row .card-img-top {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 2rem !important;
+    display: block;
+  }
+
+  .listing-scroll-row .card-body {
+    padding: 0.5rem;
+  }
+  .listing-scroll-row .card-text b {
+    font-size: 1.05rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    max-width: 100%;
+    line-height: 1.15;
+    min-height: unset;
+    margin-bottom: 0.5rem;
+  }
+}
+
+
+.airbnb-btn {
+  background-color: #FF5A5F !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  transition: background 0.2s;
+}
+
+.airbnb-btn:hover, .airbnb-btn:focus {
+  background-color: #e04850 !important;
+  color: #fff !important;
+}
+
+/* Bottom Navigation Bar (Mobile Only) */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+  z-index: 1000;
+  padding: 8px 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-nav-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 100%;
+  padding: 0 16px;
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #717171;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  min-width: 60px;
+}
+
+.bottom-nav-item:hover {
+  color: #222222;
+  background-color: #f7f7f7;
+}
+
+.bottom-nav-item i {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.bottom-nav-item span {
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Add bottom padding to body to prevent content from being hidden behind bottom nav */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 60px;
+  }
+}
+
+@media (min-width: 769px) {
+  .listing-form-card {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
