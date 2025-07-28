@@ -1,0 +1,61 @@
+<% layout("/layouts/boilerplate.ejs")%>
+
+
+<% if (!listing || listing.length === 0) { %>
+  <div class="d-md-none mb-3">
+    <div class="alert alert-warning text-center">
+      No listings matched your search.
+    </div>
+  </div>
+<% } %>
+
+<% if (listing && listing.length > 0) { %>
+  <% function chunk(arr, size) { let out = []; for(let i=0; i<arr.length; i+=size) out.push(arr.slice(i,i+size)); return out; } %>
+  <% chunk(listing, 8).forEach(function(row) { %>
+    <div class="listing-scroll-row d-flex flex-nowrap overflow-auto d-md-none mb-3">
+      <% row.forEach(function(list) { %>
+        <a href="/listings/<%= list._id %>" class="listing-link me-5">
+          <div class="card listing-card">
+            <img src="<%=list.image.url%>" class="card-img-top" alt="listing_image">
+            <div class="card-img-overlay"></div>
+            <div class="card-body">
+              <p class="card-text">
+                <b><%= list.title %></b>
+                &#8377;<%= list.price.toLocaleString('en-IN') %>/night
+                <i class="tax-info">&nbsp; +18% GST</i>
+              </p>
+            </div>
+          </div>
+        </a>
+      <% }); %>
+    </div>
+  <% }); %>
+<% } %>
+
+<!-- Desktop/tablet: original grid -->
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3 d-none d-md-flex">
+  <% if (listing.length === 0) { %>
+    <div class="col-6 offset-3">
+      <div class="alert alert-warning">
+        <p style="text-align: center;">No listings matched your search.</p>
+      </div>
+    </div>
+  <% } else { %>
+    <% listing.forEach(list => { %>
+      <a href="/listings/<%= list._id %>" class="listing-link">
+        <div class="card listing-card">
+          <img src="<%=list.image.url%>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+          <div class="card-img-overlay"></div>
+          <div class="card-body">
+            <p class="card-text">
+              <b><%= list.title %></b><br>
+              &#8377;<%= list.price.toLocaleString('en-IN') %>/night
+              <i class="tax-info">&nbsp; +18% GST</i>
+            </p>
+          </div>
+        </div>
+      </a>
+    <% }) %>
+  <% } %>
+</div>
+
