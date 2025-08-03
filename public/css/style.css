@@ -842,3 +842,17 @@ body {
     margin-right: auto;
   }
 }
+
+@media (max-width: 768px) {
+    .listing-form-card .btn-danger,
+    .listing-form-card .btn-dark {
+        width: 8rem !important;
+        margin: 0 auto;
+        display: block;
+    }
+    .listing-form-card .btn-danger {
+        width: 8rem !important;
+        margin: 0 auto;
+        display: block;
+    }
+}
