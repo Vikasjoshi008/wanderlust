@@ -520,7 +520,7 @@ body {
   }
   .listing-scroll-row .listing-card {
     width: 100%;
-    min-width: 8rem;
+    min-width: 9rem;
     padding: 0.3rem 0.2rem 0.7rem 0.2rem;
   }
   .listing-scroll-row .card-text {
@@ -576,18 +576,18 @@ body {
     margin-right: auto;
     border-radius: 2rem !important;
   }
-
-  .listing-scroll-row .card-img-top {
-    width: 12rem !important;
+/* ///////////////////////////////////////////////////////////////////////////////////////////////// */
+  /* .listing-scroll-row .card-img-top {
+    width: 11rem !important;
     height: 12rem !important;
     object-fit: cover !important;
     display: block;
     margin-left: auto;
     margin-right: auto;
     border-radius: 2rem !important;
-  }
-
-  .listing-scroll-row {
+  } */
+/* ///////////////////////////////////////////////////////////////////////////////////////////////// */
+.listing-scroll-row {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -739,10 +739,10 @@ body {
     justify-content: flex-end;
   }
   .listing-scroll-row .card-img-top {
-    width: 100% !important;
-    height: 100% !important;
+    width: 97% !important;
+    height: 70% !important;
     object-fit: cover !important;
-    border-radius: 2rem !important;
+    border-radius: 1.5rem !important;
     display: block;
   }
 
