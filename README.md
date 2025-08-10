@@ -22,8 +22,8 @@ Clean UI using EJS templating and CSS.
 
 # Project Structure
 
-**├── controllers/      # Request handlers
-**├── models/            # Database schemas/models
+- *├── controllers/      # Request handlers
+- *├── models/            # Database schemas/models
 ├── routes/            # API and view routes
 ├── views/             # EJS templates
 ├── public/            # Static assets (CSS, JS)
