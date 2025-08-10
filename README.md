@@ -15,7 +15,7 @@ Clean UI using EJS templating and CSS.
 
 # Tech Stack
 
-Backend: Node.js + Express.js.
+- **Backend**: Node.js + Express.js.
 Frontend: EJS for templating, HTML, CSS.
 Database: (Assumed) MongoDB (via Mongoose).
 Project Structure: Organized into controllers, routes, models, views, utils, and config files (`schema.js`, `cloudconfig.js`, `middleware.js`).
