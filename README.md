@@ -24,13 +24,13 @@ Clean UI using EJS templating and CSS.
 
 - ├── controllers/      # Request handlers
 - ├── models/            # Database schemas/models
-├── routes/            # API and view routes
-├── views/             # EJS templates
-├── public/            # Static assets (CSS, JS)
-├── utils/             # Helper utilities
-├── app.js             # Application entry point
-├── schema.js          # Data models/schema definitions
-├── middleware.js      # Custom middleware
-├── cloudconfig.js     # Cloud service configuration (e.g., uploads)
-├── package.json
-└── README.md
+- ├── routes/            # API and view routes
+- ├── views/             # EJS templates
+- ├── public/            # Static assets (CSS, JS)
+- ├── utils/             # Helper utilities
+- ├── app.js             # Application entry point
+- ├── schema.js          # Data models/schema definitions
+- ├── middleware.js      # Custom middleware
+- ├── cloudconfig.js     # Cloud service configuration (e.g., uploads)
+- ├── package.json
+- └── README.md
