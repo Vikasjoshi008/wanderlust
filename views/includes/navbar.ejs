@@ -25,7 +25,7 @@
                     <a class="nav-link d-none d-md-block" href="/listings/new">Airbnb your home</a>
                     <% if(curruser) { %>
                         <a class="nav-link d-none d-md-block" href="/logout">Log out</a>
-                    <% } if(!curruser){ %>
+                    <% } else { %>
                         <a class="nav-link d-none d-md-block" href="/signup">Sign up</a>
                         <a class="nav-link d-none d-md-block" href="/login">Log in</a>
                     <% } %>

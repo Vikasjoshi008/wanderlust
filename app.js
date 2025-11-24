@@ -1,6 +1,4 @@
-
 require('dotenv').config();
-
 const express=require("express");
 const app=express();
 const mongoose=require("mongoose");
@@ -65,10 +63,19 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.use(session(sessionoptions));
-app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.curruser = req.user;          
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  next();
+});
+
+
 passport.use(new localstrategy(user.authenticate()));
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
