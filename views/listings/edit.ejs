@@ -1,46 +1,96 @@
-<% layout("/layouts/boilerplate.ejs")%>
-<div class="row justify-content-center mt-3">
-  <div class="col-12 col-md-10 col-lg-8">
-    <div class="card listing-form-card p-4 shadow-sm">
-      <h3 class="mb-4 text-center">Edit your listing</h3>
-      <form action="/listings/<%=listing._id%>?_method=PUT" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
-        <div class="mb-3">
-          <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control rounded-pill px-3 py-2" id="title" name="listing[title]" value="<%=listing.title%>" required>
-          <div class="invalid-feedback">Enter a valid title</div>
-        </div>
-        <div class="mb-3">
-          <label for="description" class="form-label">Description</label>
-          <textarea name="listing[description]" id="description" class="form-control rounded-4 px-3 py-2" rows="3" required><%=listing.description%></textarea>
-          <div class="invalid-feedback">Enter a description</div>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Original listing image</label><br>
-          <img src="<%=originalimageurl%>" alt="Original image" class="img-fluid rounded mb-2" style="max-height:200px;">
-        </div>
-        <div class="mb-3">
-          <label for="image" class="form-label">Upload new Image</label>
-          <input name="listing[image]" type="file" class="form-control form-control-file">
-        </div>
-        <div class="row g-2">
-          <div class="col-12 col-md-4 mb-3">
-            <label for="price" class="form-label">Price</label>
-            <input type="number" name="listing[price]" id="price" value="<%=listing.price%>" class="form-control rounded-pill px-3 py-2" required>
-            <div class="invalid-feedback">Enter a valid price</div>
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="container section">
+
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10" data-aos="fade-up">
+
+      <div class="card border-0 shadow-lg p-4 form-card">
+
+        <h3 class="mb-4 text-center fw-semibold">Edit Your Listing ✨</h3>
+
+        <form action="/listings/<%= listing._id %>?_method=PUT"
+              method="post"
+              enctype="multipart/form-data"
+              class="needs-validation"
+              novalidate>
+
+          <!-- Title -->
+          <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text"
+                   class="form-control modern-input"
+                   name="listing[title]"
+                   value="<%= listing.title %>"
+                   required>
+            <div class="invalid-feedback">Enter a valid title</div>
           </div>
-          <div class="col-12 col-md-8 mb-3">
-            <label for="country" class="form-label">Country</label>
-            <input type="text" name="listing[country]" id="country" value="<%=listing.country%>" class="form-control rounded-pill px-3 py-2" required>
-            <div class="invalid-feedback">Enter a valid country</div>
+
+          <!-- Description -->
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea name="listing[description]"
+                      rows="4"
+                      class="form-control modern-input"
+                      required><%= listing.description %></textarea>
+            <div class="invalid-feedback">Enter a description</div>
           </div>
-        </div>
-        <div class="mb-3">
-          <label for="location" class="form-label">Location</label>
-          <input type="text" name="listing[location]" id="location" value="<%=listing.location%>" class="form-control rounded-pill px-3 py-2" required>
-          <div class="invalid-feedback">Location should be valid</div>
-        </div>
-        <button type="submit" class="btn airbnb-btn w-100 rounded-pill py-2 mt-2">Edit Listing</button>
-      </form>
+
+          <!-- Current Image -->
+          <div class="mb-4">
+            <label class="form-label">Current Image</label>
+            <div class="image-preview">
+              <img src="<%= originalimageurl %>" alt="Listing image">
+            </div>
+          </div>
+
+          <!-- Upload -->
+          <div class="mb-3">
+            <label class="form-label">Upload New Image</label>
+            <input type="file" name="listing[image]" class="form-control modern-input">
+          </div>
+
+          <!-- Price + Country -->
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Price</label>
+              <input type="number"
+                     name="listing[price]"
+                     value="<%= listing.price %>"
+                     class="form-control modern-input"
+                     required>
+            </div>
+
+            <div class="col-md-8 mb-3">
+              <label class="form-label">Country</label>
+              <input type="text"
+                     name="listing[country]"
+                     value="<%= listing.country %>"
+                     class="form-control modern-input"
+                     required>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="mb-4">
+            <label class="form-label">Location</label>
+            <input type="text"
+                   name="listing[location]"
+                   value="<%= listing.location %>"
+                   class="form-control modern-input"
+                   required>
+          </div>
+
+          <!-- Submit -->
+          <button class="btn btn-danger w-100 py-2 fw-semibold btn-modern">
+            Save Changes
+          </button>
+
+        </form>
+
+      </div>
+
     </div>
   </div>
+
 </div>

@@ -168,6 +168,183 @@ body {
   }
 }
 
+/* ===== Footer Styling ===== */
+
+.footer {
+  background: #ffffff;
+  border-top: 1px solid #eee;
+  margin-top: 60px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: color 0.25s ease;
+}
+
+.footer-links a:hover {
+  color: #ff385c;
+}
+
+/* Social Icons */
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.footer-socials a {
+  color: #555;
+  font-size: 20px;
+  transition: all 0.25s ease;
+}
+
+.footer-socials a:hover {
+  color: #ff385c;
+  transform: translateY(-3px);
+}
+
+/* Mobile spacing */
+@media (max-width: 768px) {
+  .footer-links {
+    margin: 10px 0;
+  }
+}
+
+
+/* ===== Form Card ===== */
+
+.form-card {
+  border-radius: 18px;
+  background: #fff;
+}
+
+/* Modern Inputs */
+.modern-input {
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  transition: all 0.25s ease;
+}
+
+.modern-input:focus {
+  border-color: #ff385c;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+}
+
+/* Image Preview */
+.image-preview {
+  border-radius: 14px;
+  overflow: hidden;
+  max-height: 260px;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.image-preview:hover img {
+  transform: scale(1.05);
+}
+
+.listing-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.listing-card {
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.listing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+/* Image */
+.image-wrapper {
+  height: 240px;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.listing-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Price */
+.price {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.night {
+  color: #777;
+  font-weight: 400;
+}
+
+.tax-info {
+  color: #999;
+  font-size: 12px;
+}
+
+.filters-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filters-scroll {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 13px;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.filter i {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.filter:hover {
+  color: #ff385c;
+  transform: translateY(-3px);
+}
+
+/* Hide scrollbar */
+.filters-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 
 
 /* General card image style for grid (desktop/tablet) */
