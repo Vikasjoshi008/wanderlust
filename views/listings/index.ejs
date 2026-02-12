@@ -1,102 +1,153 @@
 <% layout("/layouts/boilerplate.ejs") %>
 
-<div id="filters" class="d-none d-md-flex">
-  <div class="filter">
-    <div><i class="fa-brands fa-gripfire"></i></div>
-    <p>Trending</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-bed"></i></div>
-    <p>Rooms</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-mountain-city"></i></div>
-    <p>Iconic cities</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-mountain"></i></div>
-    <p>Mountains</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-brands fa-fort-awesome"></i></div>
-    <p>Castles</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-person-swimming"></i></div>
-    <p>Amazing pools</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-tents"></i></div>
-    <p>Camping</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-cow"></i></div>
-    <p>Farms</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-snowflake"></i></div>
-    <p>Arctic</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-igloo"></i></div>
-    <p>Domes</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-ship"></i></div>
-    <p>Boats</p>
+<div class="container py-3">
+
+  <!-- ================= FILTERS (Desktop Only) ================= -->
+  <div class="d-none d-md-flex justify-content-between align-items-center mb-4">
+
+    <div class="d-flex gap-4 overflow-auto">
+
+      <div class="text-center"
+           style="cursor:pointer; transition: transform .2s ease;"
+           onmouseover="this.style.transform='translateY(-4px)'"
+           onmouseout="this.style.transform='translateY(0)'">
+        <i class="fa-brands fa-gripfire fs-5"></i>
+        <div class="small">Trending</div>
+      </div>
+
+      <div class="text-center"
+           style="cursor:pointer; transition: transform .2s ease;"
+           onmouseover="this.style.transform='translateY(-4px)'"
+           onmouseout="this.style.transform='translateY(0)'">
+        <i class="fa-solid fa-bed fs-5"></i>
+        <div class="small">Rooms</div>
+      </div>
+
+      <div class="text-center"
+           style="cursor:pointer; transition: transform .2s ease;"
+           onmouseover="this.style.transform='translateY(-4px)'"
+           onmouseout="this.style.transform='translateY(0)'">
+        <i class="fa-solid fa-mountain-city fs-5"></i>
+        <div class="small">Cities</div>
+      </div>
+
+      <div class="text-center"
+           style="cursor:pointer; transition: transform .2s ease;"
+           onmouseover="this.style.transform='translateY(-4px)'"
+           onmouseout="this.style.transform='translateY(0)'">
+        <i class="fa-solid fa-ship fs-5"></i>
+        <div class="small">Boats</div>
+      </div>
+
+    </div>
+
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="taxSwitch">
+      <label class="form-check-label small" for="taxSwitch">
+        Display total after taxes
+      </label>
+    </div>
+
   </div>
 
-  <div class="tax-toggle">
-    <div class="form-check-reverse form-switch">
-    <input 
-    class="form-check-input" 
-    type="checkbox" 
-    role="switch" 
-    id="switchCheckDefault">
-    <label class="form-check-label" 
-    for="switchCheckDefault">Display total after taxes</label>
+
+  <% function chunk(arr, size) {
+    let out = [];
+    for (let i = 0; i < arr.length; i += size) {
+      out.push(arr.slice(i, i + size));
+    }
+    return out;
+  } %>
+
+
+  <!-- ================= MOBILE (Spotify Style) ================= -->
+  <div class="d-md-none">
+
+    <% chunk(listings, 7).forEach(function(group){ %>
+
+      <h6 class="fw-semibold mt-3 mb-2">Explore stays</h6>
+
+      <div class="d-flex overflow-auto gap-3 pb-2">
+
+        <% group.forEach(function(listing){ %>
+
+          <a href="/listings/<%= listing._id %>"
+             class="text-decoration-none text-dark"
+             style="flex: 0 0 48%;">
+
+            <div class="card border-0 shadow-sm"
+                 style="transition: transform .2s ease, box-shadow .2s ease;"
+                 onmouseover="this.style.transform='translateY(-6px)'; this.classList.add('shadow')"
+                 onmouseout="this.style.transform='translateY(0)'; this.classList.remove('shadow')">
+
+              <img src="<%= listing.image.url %>"
+                   class="card-img-top"
+                   style="height:150px; object-fit:cover; transition: transform .3s ease;"
+                   onmouseover="this.style.transform='scale(1.05)'"
+                   onmouseout="this.style.transform='scale(1)'"
+                   alt="listing">
+
+              <div class="card-body p-2">
+                <p class="fw-semibold mb-1"><%= listing.title %></p>
+
+                <p class="mb-0">
+                  ₹ <%= listing.price.toLocaleString("en-IN") %>
+                  <span class="text-muted small">for 2 nights</span>
+                </p>
+              </div>
+
+            </div>
+
+          </a>
+
+        <% }) %>
+
+      </div>
+
+    <% }) %>
+
   </div>
+
+
+  <!-- ================= DESKTOP GRID ================= -->
+  <div class="row g-4 d-none d-md-flex">
+
+    <% listings.forEach(function(listing){ %>
+
+      <div class="col-lg-3 col-md-4">
+
+        <a href="/listings/<%= listing._id %>"
+           class="text-decoration-none text-dark">
+
+          <div class="card border-0 shadow-sm h-100"
+               style="transition: transform .2s ease, box-shadow .2s ease;"
+               onmouseover="this.style.transform='translateY(-6px)'; this.classList.add('shadow')"
+               onmouseout="this.style.transform='translateY(0)'; this.classList.remove('shadow')">
+
+            <img src="<%= listing.image.url %>"
+                 class="card-img-top"
+                 style="height:260px; object-fit:cover; transition: transform .3s ease;"
+                 onmouseover="this.style.transform='scale(1.05)'"
+                 onmouseout="this.style.transform='scale(1)'"
+                 alt="listing">
+
+            <div class="card-body">
+              <h6 class="fw-semibold mb-1"><%= listing.title %></h6>
+
+              <p class="mb-0">
+                ₹ <%= listing.price.toLocaleString("en-IN") %>
+                <span class="text-muted small">for 2 nights</span>
+              </p>
+            </div>
+
+          </div>
+
+        </a>
+
+      </div>
+
+    <% }) %>
+
   </div>
+
 </div>
-<!-- Mobile: horizontally scrollable rows with 8 listings each -->
-<% function chunk(arr, size) { let out = []; for(let i=0; i<arr.length; i+=size) out.push(arr.slice(i,i+size)); return out; } %>
-<% chunk(listings, 8).forEach(function(row) { %>
-  <div class="listing-scroll-row d-md-none mb-3">
-    <% row.forEach(function(listing) { %>
-      <a href="/listings/<%= listing._id %>" class="listing-link me-5">
-        <div class="card listing-card">
-          <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image">
-          <div class="card-img-overlay"></div>
-          <div class="card-body">
-            <p class="card-text">
-              <b><%= listing.title %></b>
-              &#8377;<%= listing.price.toLocaleString('en-IN') %> for 2 nights
-              <i class="tax-info">&nbsp; +18% GST</i>
-            </p>
-          </div>
-        </div>
-      </a>
-    <% }); %>
-  </div>
-<% }); %>
-<!-- Desktop/laptop: horizontal scrollable rows with 8 listings each -->
-<% function chunk(arr, size) { let out = []; for(let i=0; i<arr.length; i+=size) out.push(arr.slice(i,i+size)); return out; } %>
-<% chunk(listings, 8).forEach(function(row) { %>
-  <div class="listing-desktop-row d-none d-md-flex mb-4">
-    <% row.forEach(function(listing) { %>
-      <a href="/listings/<%= listing._id %>" class="listing-link-desktop">
-        <div class="card listing-card-desktop">
-          <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image">
-          <div class="card-img-overlay"></div>
-          <div class="card-body">
-            <p class="card-text">
-              <b><%= listing.title %></b>
-              &#8377;<%= listing.price.toLocaleString("en-IN") %> for 2 nights
-              <i class="tax-info">&nbsp; +18% GST</i>
-            </p>
-          </div>
-        </div>
-      </a>
-    <% }); %>
-  </div>
-<% }); %>

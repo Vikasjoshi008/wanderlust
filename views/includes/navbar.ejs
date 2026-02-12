@@ -1,35 +1,96 @@
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
-        <div class="container-fluid">
-            <div class="w-100 d-flex align-items-center justify-content-between">
-                <div class="d-flex align-items-center">
-                    <a class="navbar-brand fw-bold me-3" href="/listings">
-                        <img src="https://seeklogo.com/images/A/airbnb-logo-1D03C48906-seeklogo.com.png" alt="Airbnb Logo" style="height: 40px;">
-                    </a>
-                    <a class="nav-link d-none d-md-block" href="/listings">Explore</a>
-                </div>
-                <div class="flex-grow-1 d-flex justify-content-center px-2">
-                    <form action="/listings/search" method="get" class="d-flex position-relative w-100" role="search">
-                        <input class="form-control me-2 search-inp pe-5" 
-                        name="query" type="search" 
-                        placeholder="Search Destinations" 
-                        value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>"
-                        id="searchInput" autocomplete="off" />
-            
-                        <button class="btn btn-search position-absolute top-50 end-0 translate-middle-y me-2" 
-                        type="submit">
-                            <i class="fa-solid fa-magnifying-glass"></i>Search
-                        </button>
-                    </form>
-                </div>
-                <div class="d-flex align-items-center">
-                    <a class="nav-link d-none d-md-block" href="/listings/new">Airbnb your home</a>
-                    <% if(curruser) { %>
-                        <a class="nav-link d-none d-md-block" href="/logout">Log out</a>
-                    <% } else { %>
-                        <a class="nav-link d-none d-md-block" href="/signup">Sign up</a>
-                        <a class="nav-link d-none d-md-block" href="/login">Log in</a>
-                    <% } %>
-                </div>
-            </div>
-        </div>
-    </nav>
+<nav class="navbar navbar-expand-md bg-white border-bottom sticky-top shadow-sm">
+  <div class="container-fluid">
+
+    <!-- Logo + Explore -->
+    <div class="d-flex align-items-center">
+      <a class="navbar-brand fw-bold me-3" href="/listings">
+        <img src="https://seeklogo.com/images/A/airbnb-logo-1D03C48906-seeklogo.com.png"
+             alt="Logo"
+             style="height:40px;">
+      </a>
+
+      <a class="nav-link d-none d-md-block fw-semibold"
+         href="/listings"
+         style="transition: color .2s ease;"
+         onmouseover="this.style.color='#dc3545'"
+         onmouseout="this.style.color=''">
+        Explore
+      </a>
+    </div>
+
+
+    <!-- Search Bar -->
+    <div class="flex-grow-1 d-flex justify-content-center px-2">
+      <form action="/listings/search"
+            method="get"
+            class="d-flex position-relative w-100"
+            style="max-width:500px;"
+            role="search">
+
+        <input class="form-control rounded-pill"
+               name="query"
+               type="search"
+               placeholder="Search destinations"
+               value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>"
+               autocomplete="off"
+               style="padding-right:100px; transition: box-shadow .2s ease;"
+               onfocus="this.style.boxShadow='0 0 0 .2rem rgba(220,53,69,.25)'"
+               onblur="this.style.boxShadow='none'">
+
+        <button class="btn btn-danger position-absolute top-50 end-0 translate-middle-y rounded-pill px-3 me-1"
+                type="submit"
+                style="transition: transform .2s ease;"
+                onmouseover="this.style.transform='scale(1.05)'"
+                onmouseout="this.style.transform='scale(1)'">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+      </form>
+    </div>
+
+
+    <!-- Right Side Links -->
+    <div class="d-flex align-items-center">
+
+      <a class="nav-link d-none d-md-block"
+         href="/listings/new"
+         style="transition: color .2s ease;"
+         onmouseover="this.style.color='#dc3545'"
+         onmouseout="this.style.color=''">
+        Airbnb your home
+      </a>
+
+      <% if(curruser) { %>
+
+        <a class="nav-link d-none d-md-block"
+           href="/logout"
+           style="transition: color .2s ease;"
+           onmouseover="this.style.color='#dc3545'"
+           onmouseout="this.style.color=''">
+          Log out
+        </a>
+
+      <% } else { %>
+
+        <a class="nav-link d-none d-md-block"
+           href="/signup"
+           style="transition: color .2s ease;"
+           onmouseover="this.style.color='#dc3545'"
+           onmouseout="this.style.color=''">
+          Sign up
+        </a>
+
+        <a class="nav-link d-none d-md-block"
+           href="/login"
+           style="transition: color .2s ease;"
+           onmouseover="this.style.color='#dc3545'"
+           onmouseout="this.style.color=''">
+          Log in
+        </a>
+
+      <% } %>
+
+    </div>
+
+  </div>
+</nav>

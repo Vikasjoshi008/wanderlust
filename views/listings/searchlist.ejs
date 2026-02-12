@@ -1,61 +1,106 @@
-<% layout("/layouts/boilerplate.ejs")%>
+<% layout("/layouts/boilerplate.ejs") %>
 
+<div class="container py-3">
 
-<% if (!listing || listing.length === 0) { %>
-  <div class="d-md-none mb-3">
+  <!-- ===== No Results ===== -->
+  <% if (!listing || listing.length === 0) { %>
     <div class="alert alert-warning text-center">
       No listings matched your search.
     </div>
-  </div>
-<% } %>
-
-<% if (listing && listing.length > 0) { %>
-  <% function chunk(arr, size) { let out = []; for(let i=0; i<arr.length; i+=size) out.push(arr.slice(i,i+size)); return out; } %>
-  <% chunk(listing, 8).forEach(function(row) { %>
-    <div class="listing-scroll-row d-flex flex-nowrap overflow-auto d-md-none mb-3">
-      <% row.forEach(function(list) { %>
-        <a href="/listings/<%= list._id %>" class="listing-link me-5">
-          <div class="card listing-card">
-            <img src="<%=list.image.url%>" class="card-img-top" alt="listing_image">
-            <div class="card-img-overlay"></div>
-            <div class="card-body">
-              <p class="card-text">
-                <b><%= list.title %></b>
-                &#8377;<%= list.price.toLocaleString('en-IN') %>/night
-                <i class="tax-info">&nbsp; +18% GST</i>
-              </p>
-            </div>
-          </div>
-        </a>
-      <% }); %>
-    </div>
-  <% }); %>
-<% } %>
-
-<!-- Desktop/tablet: original grid -->
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3 d-none d-md-flex">
-  <% if (listing.length === 0) { %>
-    <div class="col-6 offset-3">
-      <div class="alert alert-warning">
-        <p style="text-align: center;">No listings matched your search.</p>
-      </div>
-    </div>
-  <% } else { %>
-    <% listing.forEach(list => { %>
-      <a href="/listings/<%= list._id %>" class="listing-link">
-        <div class="card listing-card">
-          <img src="<%=list.image.url%>" class="card-img-top" alt="listing_image" style="height: 20rem;">
-          <div class="card-img-overlay"></div>
-          <div class="card-body">
-            <p class="card-text">
-              <b><%= list.title %></b><br>
-              &#8377;<%= list.price.toLocaleString('en-IN') %>/night
-              <i class="tax-info">&nbsp; +18% GST</i>
-            </p>
-          </div>
-        </div>
-      </a>
-    <% }) %>
   <% } %>
-</div>
 
+
+  <% if (listing && listing.length > 0) { %>
+
+    <% function chunk(arr, size) {
+      let out = [];
+      for (let i = 0; i < arr.length; i += size) {
+        out.push(arr.slice(i, i + size));
+      }
+      return out;
+    } %>
+
+
+    <!-- ================= MOBILE (Spotify Style) ================= -->
+    <div class="d-md-none">
+
+      <% chunk(listing, 7).forEach(function(group){ %>
+
+        <h6 class="fw-semibold mt-3 mb-2">Search Results</h6>
+
+        <div class="d-flex overflow-auto gap-3 pb-2">
+
+          <% group.forEach(function(list){ %>
+
+            <a href="/listings/<%= list._id %>"
+               class="text-decoration-none text-dark"
+               style="flex: 0 0 48%;">
+
+              <div class="card border-0 shadow-sm">
+
+                <img src="<%= list.image.url %>"
+                     class="card-img-top"
+                     style="height:150px; object-fit:cover;"
+                     alt="listing">
+
+                <div class="card-body p-2">
+                  <p class="fw-semibold mb-1"><%= list.title %></p>
+
+                  <p class="mb-0">
+                    ₹ <%= list.price.toLocaleString("en-IN") %>
+                    <span class="text-muted small">/ night</span>
+                  </p>
+                </div>
+
+              </div>
+
+            </a>
+
+          <% }) %>
+
+        </div>
+
+      <% }) %>
+
+    </div>
+
+
+    <!-- ================= DESKTOP GRID ================= -->
+    <div class="row g-4 d-none d-md-flex">
+
+      <% listing.forEach(function(list){ %>
+
+        <div class="col-lg-4 col-md-6">
+
+          <a href="/listings/<%= list._id %>"
+             class="text-decoration-none text-dark">
+
+            <div class="card border-0 shadow-sm h-100">
+
+              <img src="<%= list.image.url %>"
+                   class="card-img-top"
+                   style="height:260px; object-fit:cover;"
+                   alt="listing">
+
+              <div class="card-body">
+                <h6 class="fw-semibold mb-1"><%= list.title %></h6>
+
+                <p class="mb-0">
+                  ₹ <%= list.price.toLocaleString("en-IN") %>
+                  <span class="text-muted small">/ night</span>
+                </p>
+              </div>
+
+            </div>
+
+          </a>
+
+        </div>
+
+      <% }) %>
+
+    </div>
+
+  <% } %>
+
+</div>
