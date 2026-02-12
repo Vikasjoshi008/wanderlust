@@ -61,6 +61,7 @@ node app.js
 The app will be available at http://localhost:8080.
 
 ### 🔧 Deployment & Troubleshooting (Render)
+
 If you encounter the querySrv ENOTFOUND error while deploying to Render:
 
 Whitelist IP: Go to MongoDB Atlas > Network Access > Add IP Address > 0.0.0.0/0 (Allow all).
