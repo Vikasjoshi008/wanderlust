@@ -1,8 +1,6 @@
-const { urlencoded } = require("express");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const review = require("./review.js");
-const { required } = require("joi");
 
 const listingSchema = new Schema({
     title: {
@@ -29,8 +27,8 @@ const listingSchema = new Schema({
     },
     geometry: {
         type: {
-        type: String, // Don't do `{ location: { type: String } }`
-        enum: ['Point'], // 'location.type' must be 'Point'
+        type: String,
+        enum: ['Point'], 
         required: true
     },
     coordinates: {
