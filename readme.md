@@ -6,7 +6,6 @@
 
 ## 🚀 Live Demo
 Check out the live project here: [Wanderlust on Render](https://wanderlust-your-app-name.onrender.com)
-*(Note: Replace the link above with your actual Render URL)*
 
 ---
 
