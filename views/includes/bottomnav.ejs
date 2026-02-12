@@ -1,28 +1,33 @@
 <!-- Bottom Navigation Bar (Mobile Only) -->
 <div class="bottom-nav d-md-none">
-    <div class="bottom-nav-container">
-        <a href="/listings" class="bottom-nav-item">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <span>Explore</span>
-        </a>
-        <a href="/listings/new" class="bottom-nav-item">
-            <i class="fa-solid fa-house"></i>
-            <span>Airbnb your home</span>
-        </a>
-        <% if(curruser) { %>
-            <a href="/logout" class="bottom-nav-item">
-                <i class="fa-solid fa-sign-out-alt"></i>
-                <span>Log out</span>
-            </a>
-        <% } if(!curruser) { %>
-            <a href="/signup" class="bottom-nav-item">
-                <i class="fa-solid fa-user-plus"></i>
-                <span>Sign up</span>
-            </a>
-            <a href="/login" class="bottom-nav-item">
-                <i class="fa-solid fa-user"></i>
-                <span>Log in</span>
-            </a>
-        <% } %>
-    </div>
-</div> 
+  <div class="bottom-nav-container">
+
+    <a href="/listings" class="bottom-nav-item">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <span>Explore</span>
+    </a>
+
+    <a href="/listings/new" class="bottom-nav-item">
+      <i class="fa-solid fa-house"></i>
+      <span>Host</span>
+    </a>
+
+    <% if(curruser) { %>
+      <a href="/logout" class="bottom-nav-item">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    <% } else { %>
+      <a href="/signup" class="bottom-nav-item">
+        <i class="fa-solid fa-user-plus"></i>
+        <span>Signup</span>
+      </a>
+
+      <a href="/login" class="bottom-nav-item">
+        <i class="fa-solid fa-user"></i>
+        <span>Login</span>
+      </a>
+    <% } %>
+
+  </div>
+</div>
